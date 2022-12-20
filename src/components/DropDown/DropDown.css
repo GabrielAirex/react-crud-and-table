@@ -1,0 +1,19 @@
+.DropDown {
+    margin: 24px 0;
+}
+
+.DropDown label{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.DropDown select {
+    background-color: #fff;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.6);
+    width: 100%;
+    border: none;
+    padding:24px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
