@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Banner from './components/Banner/Banner';
 import Form from './components/Form';
+import Table from './components/Table'
 import './App.css'
 
 
@@ -71,10 +72,13 @@ function App() {
 
 
       <Banner />
+      <Table />
       <div className='Central'>
         <Form onRegister={
           employee => onRegistered(employee)
         } />
+        
+
 
       </div>
 
