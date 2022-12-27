@@ -17,6 +17,7 @@ const Form = (props) => {
     const [cargo,setCargo] = useState('')
     const [CPF,setCPF] = useState('')
     const [gender,setGender] = useState('')
+    const [seniority,setSeniority] = useState('')
     
 
 
@@ -25,10 +26,11 @@ const Form = (props) => {
             props.onRegister(
 
                 {
+                    role : cargo,
+                    cpf :CPF,
+                    gender :gender,
                 name : name,
-                cargo : cargo,
-                cpf :CPF,
-                gender :gender
+                seniority : seniority
             }
             )
            
@@ -69,8 +71,8 @@ return(
              />
 
             <DropDown 
-            value={gender}
-            onChange ={gender => setGender(gender)}
+            value={seniority}
+            onChange ={seniority => setSeniority(seniority)}
             label ='Senioridade'
             itens={senioridade}
              />
