@@ -1,23 +1,18 @@
-import TextInput from "../TextInput"
-import DropDown from "../DropDown"
 import './Form.css'
 import Button from "../Button"
 import { useState } from "react"
+import { FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, TextField } from "@mui/material"
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 const Form = (props) => {
-    const itens =['teste',
-    'teste2']
-
-    const senioridade = ['junior',
-'pleno',
-'senior']
-
 
     const [name,setName] = useState('')
     const [cargo,setCargo] = useState('')
     const [CPF,setCPF] = useState('')
     const [gender,setGender] = useState('')
     const [seniority,setSeniority] = useState('')
+    const [date_born,setDate] = useState('')
     
 
 
@@ -36,6 +31,22 @@ const Form = (props) => {
            
     }
 
+    function handleName(e) {
+        setName(e.target.value);
+    }
+    function handleCPF(e){
+        setCPF(e.target.value)
+    }
+    function handleCargo (e){
+        setCargo(e.target.value)
+    }
+    function handleGender (e){
+        setGender(e.target.value)
+    }
+    function handleSeniority (e){
+        setSeniority(e.target.value)
+    }
+
 
 return( 
 
@@ -44,38 +55,72 @@ return(
     <section className="Form">
 
         <form onSubmit={putData}>
-            <TextInput 
-            value ={name}
-            onChange={name =>setName(name)}
-            label='Nome' 
-            placeholder="Digite o nome do colaborador" />
 
-            <TextInput 
-            value ={CPF}
-            onChange={CPF =>setCPF(CPF)}
-            label='CPF'
-            placeholder="Digite o CPF do colaborador" />
+        <TextField
+        helperText="Please enter name"
+        label="Name"
+        value={name}
+        onChange={handleName}
+        />
+        <TextField
+        helperText="Please enter CPF"
+        label="CPF"
+        value={CPF}
+        onChange={handleCPF}   />
+        <TextField
+        helperText="Please enter role"
+        label="Role"
+        value={cargo}
+        onChange={handleCargo}   />
+           
+    <FormControl>
+      <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
+      <RadioGroup
+        row
+        value={gender}
+        onChange ={handleGender}
+      >
+        <FormControlLabel value="Female" control={<Radio />} label="Female" />
+        <FormControlLabel value="Male" control={<Radio />} label="Male" />
+        <FormControlLabel value="Other" control={<Radio />} label="Other" />
+        </RadioGroup>
+        </FormControl>
 
-            <TextInput 
-            value ={cargo}
-            onChange={cargo =>setCargo(cargo)}
-            label='Cargo'
-            placeholder="Digite o cargo do colaborador" />
+
+        <FormControl sx={{ m: 1, minWidth: 80 }}>
+        <InputLabel id="demo-simple-select-autowidth-label">Seniority</InputLabel>
+        <Select
+          labelId="demo-simple-select-autowidth-label"
+          id="demo-simple-select-autowidth"
+          value={seniority}
+          onChange={handleSeniority}
+          autoWidth
+          label="Age"
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={"Junior"}>Junior</MenuItem>
+          <MenuItem value={"Pleno"}> Pleno</MenuItem>
+          <MenuItem value={"Senior"}>Senior</MenuItem>
+        </Select>
+      </FormControl>
+
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+  <DatePicker
+    label="birth date"
+    value={date_born}
+    onChange={(newValue) => {
+      setDate(newValue);
+    }}
+    renderInput={(params) => <TextField {...params} />}
+  />
+</LocalizationProvider>
 
 
-            <DropDown 
-            value={gender}
-            onChange ={gender => setGender(gender)}
-            label ='Genero'
-            itens={itens}
-             />
+         
 
-            <DropDown 
-            value={seniority}
-            onChange ={seniority => setSeniority(seniority)}
-            label ='Senioridade'
-            itens={senioridade}
-             />
+
 
 
             <Button>Register</Button>

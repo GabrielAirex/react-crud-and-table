@@ -1,17 +1,12 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Button } from '@mui/material';
 import OptionButton from '../OptionButton';
 
 
-function getID(params) {
-  console.log(params.row.id)
-  return params.row.id ;
-}
 const columns  = [
   { field: 'id', headerName: 'ID', width: 70 } ,
   {
-    field: 'fullName',
+    field: 'name',
     headerName: 'Full name',
     description: 'This column has a value getter and is not sortable.',
     sortable: false,
