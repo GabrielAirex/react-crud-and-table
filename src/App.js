@@ -70,9 +70,9 @@ function App() {
   return (
     <div className="App">
 
-
-      <Banner />
+      <div className='Table_content'>
       <Table />
+      </div>
       <div className='Central'>
         <Form onRegister={
           employee => onRegistered(employee)

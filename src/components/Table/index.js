@@ -15,7 +15,7 @@ const columns  = [
     headerName: 'Full name',
     description: 'This column has a value getter and is not sortable.',
     sortable: false,
-    width: 160,
+    width: 150,
 
   },
 
@@ -27,13 +27,13 @@ const columns  = [
     field: 'age',
     headerName: 'Age',
     type: 'number',
-    width: 50,
+    width: 54,
   },
 
   {
     headerName: 'Option',
-    width: 300,
-    renderCell: (cellValues) => <OptionButton id={cellValues.row} />,
+    width: 160,
+    renderCell: (cellValues) => <OptionButton row={cellValues.row} />,
   }
 ];
 
@@ -50,12 +50,12 @@ export default function DataTable() {
   })
   
   return (
-    <div style={{ height: 700, width: '80%' }}>
+    <div style={{ height: 'auto', width: '77%' }}>
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
+        pageSize={6}
+        rowsPerPageOptions={[6]}
         //checkboxSelection
       />
     </div>
