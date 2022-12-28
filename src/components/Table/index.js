@@ -1,11 +1,25 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
+import { Button } from '@mui/material';
+import OptionButton from '../OptionButton';
 
-const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'First name', width: 130 },
-  { field: 'lastName', headerName: 'Last name', width: 130 },
-  { field: 'role', headerName: 'Role', width: 130 },
+
+function getID(params) {
+  console.log(params.row.id)
+  return params.row.id ;
+}
+const columns  = [
+  { field: 'id', headerName: 'ID', width: 70 } ,
+  {
+    field: 'fullName',
+    headerName: 'Full name',
+    description: 'This column has a value getter and is not sortable.',
+    sortable: false,
+    width: 160,
+
+  },
+
+  { field: 'role', headerName: 'Role', width: 200 },
   { field: 'gender', headerName: 'Gender', width: 130 },
   { field: 'cpf', headerName: 'CPF', width: 130 },
   { field: 'seniority', headerName: 'Seniority', width: 130 },
@@ -13,17 +27,14 @@ const columns = [
     field: 'age',
     headerName: 'Age',
     type: 'number',
-    width: 90,
+    width: 50,
   },
+
   {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-  },
+    headerName: 'Option',
+    width: 300,
+    renderCell: (cellValues) => <OptionButton id={cellValues.row} />,
+  }
 ];
 
 
@@ -39,7 +50,7 @@ export default function DataTable() {
   })
   
   return (
-    <div style={{ height: 700, width: '100%' }}>
+    <div style={{ height: 700, width: '80%' }}>
       <DataGrid
         rows={rows}
         columns={columns}
