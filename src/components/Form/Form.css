@@ -1,0 +1,42 @@
+.Form {
+    padding: 16px;
+    width: 700px;
+    height:450px;
+}
+
+.fst_block {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.scd_block {
+    margin-top: 24px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.trd_block{
+
+    margin-top: 24px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+}
+
+.frt_block{
+    margin-top: 24px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.time{
+width: 220px;
+}
+.last{
+    margin-top: 24px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}

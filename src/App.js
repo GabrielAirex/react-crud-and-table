@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import Banner from './components/Banner/Banner';
-import Form from './components/Form';
 import Table from './components/Table'
 import Modal from './components/Modal'
+
+import Navbar from './components/Navbar'
+import './resetStyle.css'
 import './App.css'
 
 
@@ -17,6 +17,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <Modal />
       <div className='Table_content'>
       <Table />

@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Form from '../Form';
 
 const style = {
@@ -12,9 +11,8 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  borderRadius: 8,
   boxShadow: 24,
   p: 4,
 };
@@ -84,7 +82,7 @@ export default function TransitionsModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>Register Employee</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -102,10 +100,7 @@ export default function TransitionsModal() {
           <Form onRegister={
           employee => onRegistered(employee)
         } />
-
-
-
-
+        
           </Box>
         </Fade>
       </Modal>
