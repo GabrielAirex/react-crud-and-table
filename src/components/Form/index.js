@@ -47,13 +47,7 @@ const Form = (props) => {
     console.log(upload)
     props.onRegister(
 
-      {
-        role: cargo,
-        cpf: CPF,
-        gender: gender,
-        name: name,
-        seniority: seniority
-      }
+      upload
     )
 
   }
