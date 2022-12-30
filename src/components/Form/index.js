@@ -25,7 +25,26 @@ const Form = (props) => {
   const putData = (event) => {
     event.preventDefault()
 
-    console.log(name, lastName, email, doc, CPF, phone, cargo, salary, seniority, gender, marital, date_born, Indicated)
+    //console.log(name, lastName, email, doc, CPF, phone, cargo, salary, seniority, gender, marital, date_born, Indicated)
+
+
+    const upload = {
+      name:name,
+      lastname:lastName,
+      email:email,
+      doc:doc,
+      cpf:CPF,
+      phone:phone,
+      role:cargo,
+      salary:salary,
+      seniority:seniority,
+      gender:gender,
+      marital:marital,
+      date_born:date_born,
+      indicated:Indicated
+    }
+
+    console.log(upload)
     props.onRegister(
 
       {

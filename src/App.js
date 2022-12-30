@@ -18,11 +18,12 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Modal />
+
       <div className='Table_content'>
       <Table />
       </div>
-      <div className='Central'>  
+      <div className='Modal'>
+      <Modal />
       </div>
     </div>
   );

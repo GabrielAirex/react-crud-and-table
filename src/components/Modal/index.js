@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Form from '../Form';
+import SendIcon from '@mui/icons-material/Send';
 
 const style = {
   position: 'absolute',
@@ -81,8 +82,8 @@ export default function TransitionsModal() {
   
 
   return (
-    <div>
-      <Button onClick={handleOpen}>Register Employee</Button>
+    <div >
+      <Button  variant="contained" onClick={handleOpen}>Register   <SendIcon style={{marginLeft:8}}/></Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
