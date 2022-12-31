@@ -1,6 +1,7 @@
 import { Button } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import Modal from '../Modal'
 
 const OptionButton = (props) =>{
 
@@ -31,9 +32,13 @@ async function deleteData (url='', data ={})
         <DeleteIcon />
         </Button>
         
-        <Button onClick ={()=>{console.log(props.cellValues.row.id)}} variant="contained">
-        <EditIcon />
-        </Button>
+       
+
+        <Modal condicional ="true" data = {props.row} >
+        <EditIcon  />
+
+        </Modal>
+        
         </>)
         
 }

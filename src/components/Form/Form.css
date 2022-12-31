@@ -35,8 +35,9 @@
 width: 220px;
 }
 .last{
-    margin-top: 24px;
+    margin-top: 12px;
     display: flex;
     width: 100%;
     justify-content: space-between;
 }
+

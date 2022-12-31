@@ -1,34 +1,135 @@
 import './Form.css'
 import Button from "../Button"
 import { useState } from "react"
-import { FormControl, FormControlLabel, FormGroup, FormLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, Switch, TextField } from "@mui/material"
+import { FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, Switch, TextField, Typography } from "@mui/material"
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 const Form = (props) => {
+ 
 
-  const [name, setName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [email, setEmail] = useState('')
-  const [doc, setDoc] = useState('')
-  const [CPF, setCPF] = useState('')
-  const [phone, setPhone] = useState('')
-  const [gender, setGender] = useState('')
-  const [salary, setSalary] = useState('')
-  const [seniority, setSeniority] = useState('')
-  const [cargo, setCargo] = useState('')
-  const [date_born, setDate] = useState('')
-  const [marital, setMarital] = useState('')
+  console.log(props.data)
+
+  const [name, setName] = useState(() =>{
+    if(props.data.length === 0){
+      return ''
+    }else{
+      return props.data.name
+    }
+  }
+  )
+
+
+
+
+  const [lastName, setLastName] = useState(() =>{
+    if(props.data.length === 0){
+      return ''
+    }else{
+      return props.data.lastname
+    }
+  }
+  )
+  const [email, setEmail] = useState(() =>{
+    if(props.data.length === 0){
+      return ''
+    }else{
+      return props.data.email
+    }
+  }
+  )
+  const [doc, setDoc] = useState(() =>{
+    if(props.data.length === 0){
+      return ''
+    }else{
+      return props.data.doc
+    }
+  }
+  )
+  const [CPF, setCPF] = useState(() =>{
+    if(props.data.length === 0){
+      return ''
+    }else{
+      return props.data.cpf
+    }
+  }
+  )
+  const [phone, setPhone] = useState(() =>{
+    if(props.data.length === 0){
+      return ''
+    }else{
+      return props.data.phone
+    }
+  }
+  )
+  const [gender, setGender] = useState(() =>{
+    if(props.data.length === 0){
+      return ''
+    }else{
+      return props.data.gender
+    }
+  }
+  )
+  const [salary, setSalary] = useState(() =>{
+    if(props.data.length === 0){
+      return ''
+    }else{
+      return props.data.salary
+    }
+  }
+  )
+  const [seniority, setSeniority] = useState(() =>{
+    if(props.data.length === 0){
+      return ''
+    }else{
+      return props.data.seniority
+    }
+  }
+  )
+  const [cargo, setCargo] = useState(() =>{
+    if(props.data.length === 0){
+      return ''
+    }else{
+      return props.data.role
+    }
+  }
+  )
+  const [date_born, setDate] = useState(() =>{
+    if(props.data.length === 0){
+      return ''
+    }else{
+      return props.data.date_born
+    }
+  }
+  )
+  const [marital, setMarital] = useState(() =>{
+    if(props.data.length === 0){
+      return ''
+    }else{
+      return props.data.marital
+    }
+  }
+  )
   const [Indicated, setIndicated] = useState(false)
 
+  const [ID,setID]  = useState(() =>{
+    if(props.data.length === 0){
+      return ''
+    }else{
+      return props.data.id
+    }
+  }
+  )
 
   const putData = (event) => {
     event.preventDefault()
 
     //console.log(name, lastName, email, doc, CPF, phone, cargo, salary, seniority, gender, marital, date_born, Indicated)
 
+  
 
-    const upload = {
+
+    var upload =  props.mode === "post" ?( {
       name:name,
       lastname:lastName,
       email:email,
@@ -42,12 +143,27 @@ const Form = (props) => {
       marital:marital,
       date_born:date_born,
       indicated:Indicated
-    }
+    }) :
+
+    ( {id:ID,
+      name:name,
+      lastname:lastName,
+      email:email,
+      doc:doc,
+      cpf:CPF,
+      phone:phone,
+      role:cargo,
+      salary:salary,
+      seniority:seniority,
+      gender:gender,
+      marital:marital,
+      date_born:date_born,
+      indicated:Indicated})
 
     console.log(upload)
     props.onRegister(
 
-      upload
+      upload,props.mode
     )
 
   }
@@ -90,6 +206,9 @@ const Form = (props) => {
   function handleIndicated(e) {
 
     setIndicated(e.target.checked);
+  }
+  function handleID (e){
+    setID(e.target.value)
   }
 
 
@@ -247,7 +366,7 @@ const Form = (props) => {
 
 
         <div className='last'>
-          <FormGroup>
+          
             <FormControlLabel
 
               control={
@@ -260,7 +379,20 @@ const Form = (props) => {
               label="Indicated"
 
             />
-          </FormGroup>
+
+         { props.condicional ==="true" &&  <FormControlLabel
+            label={<Typography sx={{fontSize:20}} >ID</Typography>}
+            control ={<TextField
+
+            sx={{width:110}}
+           
+            variant="standard"
+            disabled
+            value={ID}
+            onChange={handleID} />}
+           
+         />}
+          
           <Button>Register</Button>
 
         </div>

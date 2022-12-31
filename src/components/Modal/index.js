@@ -5,7 +5,6 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Form from '../Form';
-import SendIcon from '@mui/icons-material/Send';
 
 const style = {
   position: 'absolute',
@@ -18,7 +17,7 @@ const style = {
   p: 4,
 };
 
-export default function TransitionsModal() {
+export default function TransitionsModal(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -27,6 +26,23 @@ export default function TransitionsModal() {
   async function postData(url = '', data = {}) {
     const response = await fetch(url, {
       method: 'POST', 
+      mode: 'cors', 
+      cache: 'no-cache', 
+  
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data) 
+    });
+    return response.json(); 
+  }
+
+
+
+
+  async function putData(url = '', data = {}) {
+    const response = await fetch(url, {
+      method: 'PUT', 
       mode: 'cors', 
       cache: 'no-cache', 
   
@@ -57,33 +73,53 @@ export default function TransitionsModal() {
 
   const onRegistered = (employee) => {
 
+  if(props.mode ==="post"){
+    postData('http://localhost:8080/api/employee', employee)
+    .then((data) => {
+      console.log("POST OK"); 
+    });
+  
+    getData('http://localhost:8080/api/employee')
+    .then((data) => {
+      //console.log(data); 
+      setEmployee(data)
+      
+    }).then(
+      console.log(employees)
+    );
+  }else{
 
 
-    //setEmployee([...employees, employee])
+    putData('http://localhost:8080/api/employee', employee)
+    .then((data) => {
+      console.log("POST OK"); 
+    });
+  
+    getData('http://localhost:8080/api/employee')
+    .then((data) => {
+      //console.log(data); 
+      setEmployee(data)
+      
+    }).then(
+      console.log(employees)
+    );
 
-  postData('http://localhost:8080/api/employee', employee)
-  .then((data) => {
-    console.log("POST OK"); 
-  });
 
-  getData('http://localhost:8080/api/employee')
-  .then((data) => {
-    //console.log(data); 
-    setEmployee(data)
-    
-  }).then(
-    console.log(employees)
-  );
+  }
+
+  
+
 
 
 
    
   }
   
-
   return (
+
+
     <div >
-      <Button  variant="contained" onClick={handleOpen}>Register   <SendIcon style={{marginLeft:8}}/></Button>
+      <Button  variant="contained" onClick={handleOpen}>{props.children}</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -98,8 +134,8 @@ export default function TransitionsModal() {
         <Fade in={open}>
           <Box sx={style}>
             
-          <Form onRegister={
-          employee => onRegistered(employee)
+          <Form condicional ={props.condicional} mode={props.mode} data = {props.data} onRegister={
+          (employee) => onRegistered(employee)
         } />
         
           </Box>
