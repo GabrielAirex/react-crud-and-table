@@ -2,6 +2,7 @@ import { Button } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Modal from '../Modal'
+import Profile from '../Profile'
 
 const OptionButton = (props) =>{
 
@@ -27,7 +28,8 @@ async function deleteData (url='', data ={})
 
 
     return (<>
-
+        <div style={{display:"flex",width:'100%', justifyContent:'space-around'}}>
+        
         <Button onClick ={deleteRow} variant="outlined" >
         <DeleteIcon />
         </Button>
@@ -38,6 +40,10 @@ async function deleteData (url='', data ={})
         <EditIcon  />
 
         </Modal>
+
+
+        <Profile data = {props.row}/>
+       </div>
         
         </>)
         

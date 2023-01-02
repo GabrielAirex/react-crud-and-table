@@ -7,6 +7,18 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 const Form = (props) => {
  
+  function getAge(dateString) {
+    const today = new Date();
+    const birthDate = new Date(dateString);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    
+    return age;
+  }
 
   console.log(props.data)
 
@@ -124,11 +136,10 @@ const Form = (props) => {
   const putData = (event) => {
     event.preventDefault()
 
-    //console.log(name, lastName, email, doc, CPF, phone, cargo, salary, seniority, gender, marital, date_born, Indicated)
 
+    
   
-
-
+    const age = getAge(date_born)
     var upload =  props.mode === "post" ?( {
       name:name,
       lastname:lastName,
@@ -142,7 +153,9 @@ const Form = (props) => {
       gender:gender,
       marital:marital,
       date_born:date_born,
-      indicated:Indicated
+      indicated:Indicated,
+      age:age
+      
     }) :
 
     ( {id:ID,
@@ -158,7 +171,9 @@ const Form = (props) => {
       gender:gender,
       marital:marital,
       date_born:date_born,
-      indicated:Indicated})
+      indicated:Indicated,
+      age:age}
+      )
 
     console.log(upload)
     props.onRegister(
@@ -226,6 +241,7 @@ const Form = (props) => {
             label="First Name"
             value={name}
             onChange={handleName}
+            required
           />
 
           <TextField
@@ -233,6 +249,7 @@ const Form = (props) => {
             label="Last Name"
             value={lastName}
             onChange={handleLastName}
+            required
           />
 
 
@@ -241,6 +258,7 @@ const Form = (props) => {
             label="Email"
             value={email}
             onChange={handleEmail}
+            required
           />
         </div>
 
@@ -251,7 +269,8 @@ const Form = (props) => {
             <Select
               value={doc}
               onChange={handleDoc}
-              autoWidth
+              
+              required
             >
               <MenuItem value="">
                 <em>None</em>
@@ -265,6 +284,7 @@ const Form = (props) => {
             helperText="Please enter CPF"
             label="CPF"
             value={CPF}
+             required
             onChange={handleCPF} />
 
 
@@ -273,6 +293,7 @@ const Form = (props) => {
             label="Phone"
             value={phone}
             onChange={handlePhone}
+            required
           />
 
         </div>
@@ -283,14 +304,16 @@ const Form = (props) => {
             helperText="Please enter role"
             label="Role"
             value={cargo}
-            onChange={handleCargo} />
+            onChange={handleCargo} 
+            required/>
 
 
           <TextField
             helperText="Please enter salary"
             label="Salary"
             value={salary}
-            onChange={handleSalary} />
+            onChange={handleSalary} 
+            required/>
 
           <FormControl sx={{ minWidth: 220 }}>
             <InputLabel id="demo-simple-select-autowidth-label">Seniority</InputLabel>
@@ -301,6 +324,7 @@ const Form = (props) => {
               onChange={handleSeniority}
               autoWidth
               label="Age"
+              required
             >
               <MenuItem value="">
                 <em>None</em>
@@ -356,6 +380,7 @@ const Form = (props) => {
               onChange={(newValue) => {
                 setDate(newValue);
               }}
+              required
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
