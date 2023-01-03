@@ -11,6 +11,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from "react-router-dom";
+
+
+
 
 const pages = ['Dashboard', 'About'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -38,10 +42,22 @@ function ResponsiveAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        <Avatar alt="Remy Sharp" src="/logo_spring.png" />
+
+
+          <Button>
+            <Link to="/" >
+              <Avatar alt="Remy Sharp" src="/logo_spring.png" >
+
+              </Avatar>
+            </Link>
+          </Button>
+
 
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+
+
+
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -77,24 +93,33 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-     
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-           
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-               Dashboard
-              </Button>
+
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+
+              <Link style={{ textDecoration: "none", color: "white" }} to="/dashboard" preventScrollReset={true} >
+                Dashboard
+
+              </Link>
 
 
-              <Button
-             onClick={handleCloseNavMenu}
-             sx={{ my: 2, color: 'white', display: 'block' }}
-           >
-            About
-           </Button>
-            
+            </Button>
+
+
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              <Link style={{ textDecoration: "none", color: "white" }} to="/about" preventScrollReset={true} >
+                About
+
+              </Link>
+            </Button>
+
           </Box>
 
 

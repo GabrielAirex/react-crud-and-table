@@ -1,12 +1,9 @@
-import Table from './components/Table'
-import Modal from './components/Modal'
-
-import Navbar from './components/Navbar'
 import './resetStyle.css'
 import './App.css'
-import SendIcon from '@mui/icons-material/Send';
-
-
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Home from './Pages/Home'
+import Dashboard from './Pages/Dashboard';
+import About from './Pages/About';
 
 
 
@@ -17,18 +14,14 @@ function App() {
 
 
   return (
-    <div className="App">
-      <Navbar />
-
-      <div className='Table_content'>
-      <Table />
-      </div>
-      <div className='Modal' >
-      <Modal condicional="false" data={{}} mode="post">
-      Register   <SendIcon style={{marginLeft:8}}/>
-      </Modal>
-      </div>
-    </div>
+    
+    <Router>
+    <Routes>
+      <Route path='/' element={<Home />}/>
+      <Route path='/dashboard' element={<Dashboard />}/>
+      <Route path='/about' element={<About />}/>
+    </Routes>
+  </Router>
   );
 }
 
