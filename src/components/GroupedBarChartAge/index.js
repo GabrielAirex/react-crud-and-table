@@ -32,7 +32,7 @@ const GroupedBarChartAge = (props) =>{
       return(
         <Plot
         data={data}
-        layout={ {width: 400, height: 500, title: 'Média de idade por Genero'} } />
+        layout={ {width: 330, height: 400} } />
       )
   }
 

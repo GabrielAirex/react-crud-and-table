@@ -21,7 +21,7 @@ const PieCharte = (props) =>{
       return(
         <Plot
         data={data}
-        layout={ {width: 400, height: 500, title: 'Quantidade de colaboradores por Genero'} } />
+        layout={ {width: 370, height: 400} } />
       )
   }
 

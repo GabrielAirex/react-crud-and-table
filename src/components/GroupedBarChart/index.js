@@ -27,12 +27,12 @@ const GroupedBarChartGender = (props) =>{
     name: "Média salarial masculina: "+ male_salary_average,
     type: "bar",
   };
-  
+  // title: 'Média salarial por Genero'
   var data = [plot1, plot2];
       return(
         <Plot
         data={data}
-        layout={ {width: 400, height: 500, title: 'Média salarial por Genero'} } />
+        layout={ {width: 330, height: 400} } />
       )
   }
 

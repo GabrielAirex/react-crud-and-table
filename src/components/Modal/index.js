@@ -135,8 +135,11 @@ export default function TransitionsModal(props) {
           <Box sx={style}>
             
           <Form condicional ={props.condicional} mode={props.mode} data = {props.data} onRegister={
-          (employee) => onRegistered(employee)
-        } />
+          (employee) => { onRegistered(employee) ;          handleClose()
+          }}
+         
+
+          />
         
           </Box>
         </Fade>
