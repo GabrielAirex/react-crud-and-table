@@ -20,6 +20,11 @@ const GroupedBarChartGender = (props) =>{
     if (isNaN(other_salary_average)){
       other_salary_average = 0
     }
+    if (isNaN(male_salary_average)){
+      other_salary_average = 0
+    }  if (isNaN(female_salary_average)){
+      other_salary_average = 0
+    }
     
     var plot1 = {
     

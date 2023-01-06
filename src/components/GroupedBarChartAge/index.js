@@ -8,15 +8,21 @@ const GroupedBarChartAge = (props) =>{
 
 
 
-    const female_age_arr = _data.filter(employee => employee.gender ==='Female').map(employee => {return employee.age})
-    const female_age_average = female_age_arr.map(Number).reduce((a, b) => a + b, 0) / female_age_arr.length 
+    var female_age_arr = _data.filter(employee => employee.gender ==='Female').map(employee => {return employee.age})
+    var female_age_average = female_age_arr.map(Number).reduce((a, b) => a + b, 0) / female_age_arr.length 
 
-    const male_age_arr = _data.filter(employee => employee.gender ==='Male').map(employee => {return employee.age})
-    const male_age_average = male_age_arr.map(Number).reduce((a, b) => a + b, 0) / male_age_arr.length 
+    var male_age_arr = _data.filter(employee => employee.gender ==='Male').map(employee => {return employee.age})
+    var male_age_average = male_age_arr.map(Number).reduce((a, b) => a + b, 0) / male_age_arr.length 
 
     var other_age_arr = _data.filter(employee => employee.gender ==='Other').map(employee => {return employee.age})
     var other_age_average = other_age_arr.map(Number).reduce((a, b) => a + b, 0) / other_age_arr.length 
     
+    if (isNaN(female_age_average)){
+      female_age_average = 0
+    }
+    if (isNaN(male_age_average)){
+      male_age_average = 0
+    }
     if (isNaN(other_age_average)){
       other_age_average = 0
     }
@@ -43,16 +49,26 @@ const GroupedBarChartAge = (props) =>{
 }if(props.select ==="Senioridade"){
 
   
-  const female_age_arr = _data.filter(employee => employee.seniority ==='Junior').map(employee => {return employee.age})
-  const female_age_average = female_age_arr.map(Number).reduce((a, b) => a + b, 0) / female_age_arr.length 
+  var female_age_arr = _data.filter(employee => employee.seniority ==='Junior').map(employee => {return employee.age})
+  var female_age_average = female_age_arr.map(Number).reduce((a, b) => a + b, 0) / female_age_arr.length 
 
-  const male_age_arr = _data.filter(employee => employee.seniority ==='Pleno').map(employee => {return employee.age})
-  const male_age_average = male_age_arr.map(Number).reduce((a, b) => a + b, 0) / male_age_arr.length 
+  var male_age_arr = _data.filter(employee => employee.seniority ==='Pleno').map(employee => {return employee.age})
+  var male_age_average = male_age_arr.map(Number).reduce((a, b) => a + b, 0) / male_age_arr.length 
 
 
-  const senior_age_arr = _data.filter(employee => employee.seniority ==='Senior').map(employee => {return employee.age})
-  const senior_age_average = male_age_arr.map(Number).reduce((a, b) => a + b, 0) / senior_age_arr.length 
+  var senior_age_arr = _data.filter(employee => employee.seniority ==='Senior').map(employee => {return employee.age})
+  var senior_age_average = male_age_arr.map(Number).reduce((a, b) => a + b, 0) / senior_age_arr.length 
 
+
+  if (isNaN(female_age_average)){
+    female_age_average = 0
+  }
+  if (isNaN(male_age_average)){
+    male_age_average = 0
+  }
+  if (isNaN(senior_age_average)){
+    senior_age_average = 0
+  }
   
   var plot1 = {
   

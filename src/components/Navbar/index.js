@@ -127,8 +127,8 @@ function ResponsiveAppBar() {
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: 'white', display: 'block' }}
             >
-              <Link style={{ textDecoration: "none", color: "white" }} to="/about" preventScrollReset={true} >
-                About
+              <Link style={{ textDecoration: "none", color: "white" }} to="/lists" preventScrollReset={true} >
+                Lists
 
               </Link>
             </Button>

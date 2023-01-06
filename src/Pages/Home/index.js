@@ -2,8 +2,15 @@ import Table from '../../components/Table'
 import Modal from '../../components/Modal'
 import Navbar from '../../components/Navbar'
 import SendIcon from '@mui/icons-material/Send';
+import { ToggleButton } from '@mui/material';
+import ReactToPdf from 'react-to-pdf'
+import React from 'react';
 
 const Home =() =>{
+
+
+    
+        
 
     return(
 
@@ -16,6 +23,8 @@ const Home =() =>{
             <div className='Modal' >
             <Modal condicional="false" data={{}} mode="post">
             Register   <SendIcon style={{marginLeft:8}}/>
+
+           
             </Modal>
             </div>
       </div>
