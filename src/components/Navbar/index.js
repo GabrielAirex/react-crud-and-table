@@ -96,6 +96,19 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 
+          <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+
+              <Link style={{ textDecoration: "none", color: "white" }} to="/" preventScrollReset={true} >
+                Home
+
+              </Link>
+
+
+            </Button>
+
             <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: 'white', display: 'block' }}
