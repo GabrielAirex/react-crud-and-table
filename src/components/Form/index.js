@@ -4,28 +4,41 @@ import { useState } from "react"
 import { FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, Switch, TextField, Typography } from "@mui/material"
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import InputMask from 'react-input-mask'
 
 const Form = (props) => {
- 
+
+  const mask_doc =( (doc) =>{
+   if (doc ==="CPF"){
+    return "999.999.999-99"
+  }
+  if(doc==="RG"){
+
+    return "99.999.999-9"
+  }
+
+
+})
+
   function getAge(dateString) {
     const today = new Date();
     const birthDate = new Date(dateString);
     let age = today.getFullYear() - birthDate.getFullYear();
     const m = today.getMonth() - birthDate.getMonth();
-    
+
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
+      age--;
     }
-    
+
     return age;
   }
 
   console.log(props.data)
 
-  const [name, setName] = useState(() =>{
-    if(props.data.length === 0){
+  const [name, setName] = useState(() => {
+    if (props.data.length === 0) {
       return ''
-    }else{
+    } else {
       return props.data.name
     }
   }
@@ -34,100 +47,100 @@ const Form = (props) => {
 
 
 
-  const [lastName, setLastName] = useState(() =>{
-    if(props.data.length === 0){
+  const [lastName, setLastName] = useState(() => {
+    if (props.data.length === 0) {
       return ''
-    }else{
+    } else {
       return props.data.lastname
     }
   }
   )
-  const [email, setEmail] = useState(() =>{
-    if(props.data.length === 0){
+  const [email, setEmail] = useState(() => {
+    if (props.data.length === 0) {
       return ''
-    }else{
+    } else {
       return props.data.email
     }
   }
   )
-  const [doc, setDoc] = useState(() =>{
-    if(props.data.length === 0){
+  const [doc, setDoc] = useState(() => {
+    if (props.data.length === 0) {
       return ''
-    }else{
+    } else {
       return props.data.doc
     }
   }
   )
-  const [CPF, setCPF] = useState(() =>{
-    if(props.data.length === 0){
+  const [CPF, setCPF] = useState(() => {
+    if (props.data.length === 0) {
       return ''
-    }else{
+    } else {
       return props.data.cpf
     }
   }
   )
-  const [phone, setPhone] = useState(() =>{
-    if(props.data.length === 0){
+  const [phone, setPhone] = useState(() => {
+    if (props.data.length === 0) {
       return ''
-    }else{
+    } else {
       return props.data.phone
     }
   }
   )
-  const [gender, setGender] = useState(() =>{
-    if(props.data.length === 0){
+  const [gender, setGender] = useState(() => {
+    if (props.data.length === 0) {
       return ''
-    }else{
+    } else {
       return props.data.gender
     }
   }
   )
-  const [salary, setSalary] = useState(() =>{
-    if(props.data.length === 0){
+  const [salary, setSalary] = useState(() => {
+    if (props.data.length === 0) {
       return ''
-    }else{
+    } else {
       return props.data.salary
     }
   }
   )
-  const [seniority, setSeniority] = useState(() =>{
-    if(props.data.length === 0){
+  const [seniority, setSeniority] = useState(() => {
+    if (props.data.length === 0) {
       return ''
-    }else{
+    } else {
       return props.data.seniority
     }
   }
   )
-  const [cargo, setCargo] = useState(() =>{
-    if(props.data.length === 0){
+  const [cargo, setCargo] = useState(() => {
+    if (props.data.length === 0) {
       return ''
-    }else{
+    } else {
       return props.data.role
     }
   }
   )
-  const [date_born, setDate] = useState(() =>{
-    if(props.data.length === 0){
+  const [date_born, setDate] = useState(() => {
+    if (props.data.length === 0) {
       return ''
-    }else{
+    } else {
       return props.data.date_born
     }
   }
   )
-  const [marital, setMarital] = useState(() =>{
-    if(props.data.length === 0){
+  const [marital, setMarital] = useState(() => {
+    if (props.data.length === 0) {
       return ''
-    }else{
+    } else {
       return props.data.marital
     }
   }
   )
   const [Indicated, setIndicated] = useState(false)
 
-  const [ID,setID]  = useState(() =>{
-    if(props.data.length === 0){
+  const [ID, setID] = useState(() => {
+    if (props.data.length === 0) {
       return ''
-    }else{
+    } else {
       return props.data.id
     }
   }
@@ -137,48 +150,50 @@ const Form = (props) => {
     event.preventDefault()
 
 
-    
-  
+
+
     const age = getAge(date_born)
-    var upload =  props.mode === "post" ?( {
-      name:name,
-      lastname:lastName,
-      email:email,
-      doc:doc,
-      cpf:CPF,
-      phone:phone,
-      role:cargo,
-      salary:salary,
-      seniority:seniority,
-      gender:gender,
-      marital:marital,
-      date_born:date_born,
-      indicated:Indicated,
-      age:age
-      
+    var upload = props.mode === "post" ? ({
+      name: name,
+      lastname: lastName,
+      email: email,
+      doc: doc,
+      cpf: CPF,
+      phone: phone,
+      role: cargo,
+      salary: salary,
+      seniority: seniority,
+      gender: gender,
+      marital: marital,
+      date_born: date_born,
+      indicated: Indicated,
+      age: age
+
     }) :
 
-    ( {id:ID,
-      name:name,
-      lastname:lastName,
-      email:email,
-      doc:doc,
-      cpf:CPF,
-      phone:phone,
-      role:cargo,
-      salary:salary,
-      seniority:seniority,
-      gender:gender,
-      marital:marital,
-      date_born:date_born,
-      indicated:Indicated,
-      age:age}
+      ({
+        id: ID,
+        name: name,
+        lastname: lastName,
+        email: email,
+        doc: doc,
+        cpf: CPF,
+        phone: phone,
+        role: cargo,
+        salary: salary,
+        seniority: seniority,
+        gender: gender,
+        marital: marital,
+        date_born: date_born,
+        indicated: Indicated,
+        age: age
+      }
       )
 
     console.log(upload)
     props.onRegister(
 
-      upload,props.mode
+      upload, props.mode
     )
 
   }
@@ -222,7 +237,7 @@ const Form = (props) => {
 
     setIndicated(e.target.checked);
   }
-  function handleID (e){
+  function handleID(e) {
     setID(e.target.value)
   }
 
@@ -269,7 +284,7 @@ const Form = (props) => {
             <Select
               value={doc}
               onChange={handleDoc}
-              
+
               required
             >
               <MenuItem value="">
@@ -277,25 +292,45 @@ const Form = (props) => {
               </MenuItem>
               <MenuItem value={"CPF"}>CPF</MenuItem>
               <MenuItem value={"RG"}> RG</MenuItem>
-              <MenuItem value={"Passport"}>Passport</MenuItem>
             </Select>
           </FormControl>
-          <TextField
-            helperText="Please enter CPF"
-            label="CPF"
+
+
+          <InputMask 
+          
+            mask={mask_doc(doc)}
+            alwaysShowMask={true}
+
+            maskChar={null}
             value={CPF}
-             required
-            onChange={handleCPF} />
+            onChange={handleCPF}>
+
+            {() =>
+              <TextField
+                helperText={doc === "" || typeof doc == "undefined" ? "Please enter document" : `Please enter ${doc}`}
+                label={doc === "" || typeof doc == "undefined" ? "Document" : `${doc}`}
+                value={CPF}
+                required
+                onChange={handleCPF} />}
+
+          </InputMask>
 
 
-          <TextField
-            helperText="Please enter the phone"
-            label="Phone"
+          <InputMask mask="+55 (99) 99999-9999"
+
+
+            maskChar={null}
             value={phone}
-            onChange={handlePhone}
-            required
-          />
-
+            onChange={handlePhone} >
+            {() =>
+              <TextField
+                helperText="Please enter the phone"
+                label="Phone"
+                value={phone}
+                onChange={handlePhone}
+                required
+              />}
+          </InputMask>
         </div>
 
 
@@ -304,16 +339,21 @@ const Form = (props) => {
             helperText="Please enter role"
             label="Role"
             value={cargo}
-            onChange={handleCargo} 
-            required/>
+            onChange={handleCargo}
+            required />
 
-
-          <TextField
-            helperText="Please enter salary"
-            label="Salary"
+          <InputMask mask="99999999"
+            maskChar={null}
             value={salary}
-            onChange={handleSalary} 
-            required/>
+            onChange={handleSalary} >
+            {() =>
+              <TextField
+                helperText="Please enter salary"
+                label="Salary"
+                value={salary}
+                onChange={handleSalary}
+                required />}
+          </InputMask>
 
           <FormControl sx={{ minWidth: 220 }}>
             <InputLabel id="demo-simple-select-autowidth-label">Seniority</InputLabel>
@@ -341,7 +381,7 @@ const Form = (props) => {
         <div className='frt_block'>
 
           <FormControl>
-            <FormLabel sx={{ fontSize: 20, padding: 0, marginRight: 2 }}>Gender</FormLabel>
+            <FormLabel sx={{ fontSize: 18, padding: 0, marginRight: 1 }}>Gender</FormLabel>
             <RadioGroup sx={{ width: 220 }}
               row
               value={gender}
@@ -391,33 +431,33 @@ const Form = (props) => {
 
 
         <div className='last'>
-          
-            <FormControlLabel
 
-              control={
-                <Switch
-                  checked={Indicated}
-                  onChange={handleIndicated}
+          <FormControlLabel
 
-                />
-              }
-              label="Indicated"
+            control={
+              <Switch
+                checked={Indicated}
+                onChange={handleIndicated}
 
-            />
+              />
+            }
+            label="Indicated"
 
-         { props.condicional ==="true" &&  <FormControlLabel
-            label={<Typography sx={{fontSize:20}} >ID</Typography>}
-            control ={<TextField
+          />
 
-            sx={{width:110}}
-           
-            variant="standard"
-            disabled
-            value={ID}
-            onChange={handleID} />}
-           
-         />}
-          
+          {props.condicional === "true" && <FormControlLabel
+            label={<Typography sx={{ fontSize: 20 }} >ID</Typography>}
+            control={<TextField
+
+              sx={{ width: 110 }}
+
+              variant="standard"
+              disabled
+              value={ID}
+              onChange={handleID} />}
+
+          />}
+
           <Button>Register</Button>
 
         </div>

@@ -51,8 +51,8 @@ const Dashboard = () => {
 
                 <div style={{display:"flex",justifyContent:"center",marginTop:24}}> 
                 <PieCharte  data={data} select={select} />
-                <GroupedBarChartGender data={data} select={select}/>
-                <GroupedBarChartAge data={data} select={select} />
+                <GroupedBarChartGender data={data} select={select} core="salary"/>
+                <GroupedBarChartGender data={data} select={select} core="age"/>
                 </div> 
                 </div>
                 
